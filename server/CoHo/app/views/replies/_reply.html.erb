@@ -1,0 +1,15 @@
+<%= div_for(reply) do %>
+<%= link_to gravatar_for(reply.user, size: 20), reply.user %>
+	<span class="user"><%= link_to reply.user.name, reply.user %></span>
+ <div class="comments_wrapper clearfix">
+ 	 <div class="pull-left">
+ 	 	<p class"lead"><%= reply.body %></p>
+ 	 </div>
+
+ 	 <div class="btn-group pull-right">
+ 	 	<% if reply.user == current_user %>
+ 	 	 <%= link_to 'Delete', reply, method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-sm btn-default" %>
+ 	 	 <% end %>
+ 	 	</div>
+ 	 </div>
+ 	 <% end %>

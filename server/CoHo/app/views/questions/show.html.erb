@@ -1,0 +1,89 @@
+<div>
+	<span class="title coho3">
+		<%= @question.title %>
+	</span>
+	<br>
+
+
+<!-- tag -->
+<div>
+<% if @question.labels!=nil %>
+  <% @question.labels.each do |label| %>
+    <span style="border:1px solid; border-radius: 2px;" class="alert alert-info">
+  	 &nbsp;
+  	<%= label.name %>
+    </span>
+  		<% if current_user?(@question.user) %>
+  		<%= link_to "x", label, 
+ 	 	method: :delete,data: { confirm: "You sure?" } %>
+  	<% end %>
+  <% end %>
+<% end %>
+
+<% if current_user?(@question.user) %>
+  <a data-toggle="collapse" href="#form_<%= @question.id %>" aria-expanded="false" aria-controls="form">
+    +
+  </a>
+<% end %>
+
+
+<div class="collapse" id="form_<%= @question.id %>" >
+  <div class="well">
+    <%= form_for(Label.new) do|f| %>
+      <input type="text" name="new_label"/>
+	  <input type="hidden" name="question_id" value=<%= @question.id %>>
+	  <%= f.submit :Add, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+</div>
+<!-- tag -->
+	<%= link_to gravatar_for(@question.user, size: 20), @question.user %>
+	<span class="user"><%= link_to @question.user.name, @question.user %></span>
+	<br>
+
+	<span class="timestamp coho4">
+		Posted <%= time_ago_in_words(@question.created_at) %> ago.
+	</span>
+	<br>
+	
+	<span class="content">
+		<%= @question.content %>
+		 <%= image_tag @question.picture.url if @question.picture? %>
+	</span>
+	<br>
+
+
+
+<%= link_to new_question_box_path(@question), class: "btn btn-circle btn-danger btn-xs", title: "Like" do %>
+            <i class="fa fa-heart fa-fw"></i>
+          <% end %>
+
+	<% if current_user?(@question.user) %>
+	<%= link_to "Delete", @question, method: :delete,
+	data: { confirm: "You sure?" }, class: "btn btn-default pull-right" %>
+	<% end %>
+
+</div>	
+
+
+
+
+<h3 class="answers_title">
+	<%= @question.answers.count %> Answers 
+</h3>
+
+<div id="comments">
+	<%= render :partial => @question.answers %>
+</div>
+<%= simple_form_for [@question, Answer.new] do |f| %>
+	<div class="field">
+		<%= f.text_area :body, class: "form-control" %>
+	</div>
+	<br>
+	<%= f.submit "Add Answer", class: "btn btn-primary" %>
+	  <span class="picture">
+    <%= f.file_field :picture %>
+  </span>
+<% end %>

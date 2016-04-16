@@ -1,0 +1,43 @@
+<h1 class="coho">Files</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th class="file">Filename</th>
+      <th class="file">User</th>
+      <th class="file">Operation</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @documents.each do |document| %>
+      <tr>
+        <td><%= document.filename %></td>
+        <td>
+
+  <%= link_to gravatar_for(document.user, size: 20), document.user %>
+  <span class="user"><%= link_to document.user.name, document.user %></span>
+        </td>
+        <td><%= button_to 'Download', document, method: :get, class: "btn btn-default" %></td>
+        <td>
+<% if current_user?(document.user) %>
+          <%= button_to 'Delete', document, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+<% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h2><%= link_to 'Upload File Here', new_document_path, class: "btn btn-primary" %></h2>
+
+
+
+
+
+
+
+
+
