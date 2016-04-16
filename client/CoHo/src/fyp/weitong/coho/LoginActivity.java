@@ -23,16 +23,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import fyp.json.android.UrlJsonAsyncTask;
 
 public class LoginActivity extends Activity{
-	private final static String LOGIN_API_ENDPOINT_URL = "http://008fb944.ngrok.io//login";
+	private final static String LOGIN_API_ENDPOINT_URL = "http://bca28b29.ngrok.io//login";
 	private SharedPreferences mPreferences;
 	private String mUserEmail;
 	private String mUserPassword;
-	private TextView responseText;
 	Button registerButton;
 	Button demoButton;
 	
@@ -40,7 +38,7 @@ public class LoginActivity extends Activity{
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_login);
-	    responseText=(TextView)findViewById(R.id.textView2);
+
 	    
 	    mPreferences = getSharedPreferences("CurrentUser", MODE_PRIVATE);
 	    

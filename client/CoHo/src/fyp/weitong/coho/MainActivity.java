@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
 			    }
 			});
 			
-		webView.loadUrl("https://2da9668a.ngrok.io");
+		webView.loadUrl("https://bca28b29.ngrok.io");
 	}
 	
 		
