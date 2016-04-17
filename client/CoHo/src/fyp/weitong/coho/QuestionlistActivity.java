@@ -63,7 +63,7 @@ public class QuestionlistActivity extends Activity {
 		
 		
 		HttpAsyncTask task = new HttpAsyncTask();
-        task.execute("http://bca28b29.ngrok.io//getquestion.js");
+        task.execute("http://4921f0ae.ngrok.io//getquestion.js");
 		
 	}
 	
