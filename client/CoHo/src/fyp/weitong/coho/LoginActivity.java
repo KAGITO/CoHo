@@ -27,7 +27,7 @@ import android.widget.Toast;
 import fyp.json.android.UrlJsonAsyncTask;
 
 public class LoginActivity extends Activity{
-	private final static String LOGIN_API_ENDPOINT_URL = "http://4921f0ae.ngrok.io//login";
+	private final static String LOGIN_API_ENDPOINT_URL = "http://3a5822b7.ngrok.io//login";
 	private SharedPreferences mPreferences;
 	private String mUserEmail;
 	private String mUserPassword;

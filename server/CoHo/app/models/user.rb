@@ -23,7 +23,7 @@
       has_many :questions, dependent: :destroy
       has_many :documents, dependent: :destroy
       has_many :boxes
-      #has_many :comments
+      has_many :comments, dependent: :destroy
 
       # Returns the hash digest of a string.
       def User.digest(string)
